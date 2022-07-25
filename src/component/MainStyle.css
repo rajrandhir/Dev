@@ -20,14 +20,18 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   cursor: pointer;
 }
-.css-wb57ya-MuiFormControl-root-MuiTextField-root{
-    background-color: white;
-    padding: 5px !important;
-    border-radius: 5px;
-   
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root:before{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+}    
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root:after{
+    border-bottom: 1px solid #9da9b5 !important;
 }
-.css-1a1fmpi-MuiInputBase-root-MuiInput-root{
-    font-size: 18px !important;
-    padding: 0 0.5rem 0 0.5rem;
+.css-wb57ya-MuiFormControl-root-MuiTextField-root{
+    background: white!important;
+    border-radius: 6px!important;
+    padding-right: 5px!important;
+}
+.css-1x51dt5-MuiInputBase-input-MuiInput-input{
+    padding: 9px 11px !important;
 }
 

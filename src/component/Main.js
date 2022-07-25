@@ -10,24 +10,19 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import data from "../record.json"; 
-import { fontSize } from "@mui/system";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+
+import data from "../record.json";
 
 const Main = () => {
-  const [searchItem, setSearchItem] = useState('')
+  const [searchItem, setSearchItem] = useState("");
 
-
-
- 
-   
- 
-  return ( 
+  return (
     <>
       <div className="main-container">
-        <section>
+        <section style={{marginBottom: "2rem"}}>
           <div className="header-container">
             <div className="header-wraper">
               <div className="header">
@@ -35,7 +30,7 @@ const Main = () => {
                   <div className="searchBox">
                     <TextField
                       placeholder="Search"
-                      onChange={(e)=>setSearchItem(e.target.value)}
+                      onChange={(e) => setSearchItem(e.target.value)}
                       value={data.name}
                       InputProps={{
                         endAdornment: (
@@ -53,81 +48,93 @@ const Main = () => {
             </div>
           </div>
         </section>
-        <section>
+             
+        <section   style={{ width: "90%", margin: "auto", paddingBottom: "1rem" }}>
           <div className="">
-            <Grid container  spacing={2} style={{padding: "3rem"}}>
-                  
-                      {
-                        data.filter((item)=>{
-                          if(searchItem == ''){
-                            return item
-                          }else if(item.title.toLowerCase().includes(searchItem.toLocaleLowerCase())){
-                            return item
+            <Grid
+              container
+              spacing={2}
+            >
+              {data
+                .filter((item) => {
+                  if (searchItem === "") {
+                    return item;
+                  } else if (
+                    item.title
+                      .toLowerCase()
+                      .includes(searchItem.toLocaleLowerCase())
+                  ) {
+                    return item;
+                  }
+                })
+                .map((item) => {
+                  return (
+                    <>
+                      <Grid item xs={12} sm={6} md={4} lg={3}>
+                        <Card className="product-container">
+                          <CardMedia
+                            component="img"
+                            height="140"
+                            image={item.image}
+                            alt="green iguana"
+                          />
+                          <CardContent>
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                              <div>
+                                <Typography
+                                  gutterBottom
+                                  variant="h5"
+                                  component="div"
+                                >
+                                  {item.title}
+                                </Typography>
+                              </div>
+                              <div>
+                                <PlaylistAddIcon />
+                                <span>
+                                  <FavoriteIcon />
+                                </span>
+                              </div>
+                            </div>
 
-                          }
-
-                        }).map((item)=>{
-                          return (
-                            <>
-                              <Grid item xs={3} >
-                    <Card className="product-container">
-                      <CardMedia
-                        component="img"
-                        height="140"
-                        image={item.image}
-                        alt="green iguana"
-                      />
-                      <CardContent>
-                        <div style={{display: "flex", justifyContent: "space-between", alignItems:"center"}}>
-                          <div>
-                          <Typography gutterBottom variant="h5" component="div">
-                          {item.title}
-                        </Typography>
-                          </div>
-                          <div>
-                            <span><FavoriteIcon/></span>
-                            
-                          </div>
-                        </div>
-                        
-                        <Typography variant="body2" color="text.secondary">
-                          {item.desc}
-                        </Typography>
-                      </CardContent>
-                      <CardActions sx={{display: "flex", justifyContent: "space-between"}}>
-                        <div>
-                            <Typography>${item.price}</Typography>
-                            <Typography sx={{fontSize: '1rem', color: "teal", fontSize: "20px"}}>*******</Typography>
-    
-                        </div>
-                        <div>
-                        <ShoppingCartIcon sx={{mr:1, fontSize: "20px"}}/>
-                        <Button variant="outlined" size="medium">LIVE PREVIEW</Button>
-                        </div>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                  
-                            </>
-                          )
-                      })
-                      }
-                     
-
-            
-
-
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
+                            <Typography variant="body2" color="text.secondary">
+                              {item.desc}
+                            </Typography>
+                          </CardContent>
+                          <CardActions
+                            sx={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <div>
+                              <Typography>${item.price}</Typography>
+                              <Typography
+                                sx={{ fontSize: "1rem", color: "teal" }}
+                              >
+                                *******
+                              </Typography>
+                            </div>
+                            <div>
+                              <ShoppingCartIcon
+                                sx={{ mr: 1, fontSize: "20px" }}
+                              />
+                              <Button variant="outlined" size="medium">
+                                LIVE PREVIEW
+                              </Button>
+                            </div>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    </>
+                  );
+                })}
             </Grid>
           </div>
         </section>
