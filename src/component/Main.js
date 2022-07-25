@@ -24,7 +24,7 @@ const Main = () => {
  
    
  
-  return (
+  return ( 
     <>
       <div className="main-container">
         <section>
