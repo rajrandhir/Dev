@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "title": "Product1",
+        "desc": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without",
+        "price": 121,
+        "image": "https://picsum.photos/200"
+        
+    },
+    {
+        "id": "1",
+        "title": "Product2",
+        "desc": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without",
+        "price": 121,
+        "image": "https://picsum.photos/200"
+        
+    },
+    {
+        "id": "1",
+        "title": "Product3",
+        "desc": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without",
+        "price": 121,
+        "image": "https://picsum.photos/200"
+        
+    },
+    {
+        "id": "1",
+        "title": "Product4",
+        "desc": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without",
+        "price": 121,
+        "image": "https://picsum.photos/200"
+        
+    } 
+]

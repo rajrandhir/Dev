@@ -1,0 +1,33 @@
+
+.header {
+    /* background-image: url("../asset/header.jpg"); */
+    background-color: teal;
+    height: 50vh;
+    width: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img_wraper{
+    width: 50%;    
+}
+.css-o69gx8-MuiCardMedia-root{
+    object-fit: fill !important;
+}
+.product-container:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+.css-wb57ya-MuiFormControl-root-MuiTextField-root{
+    background-color: white;
+    padding: 5px !important;
+    border-radius: 5px;
+   
+}
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root{
+    font-size: 18px !important;
+    padding: 0 0.5rem 0 0.5rem;
+}
+
