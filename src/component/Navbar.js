@@ -11,9 +11,13 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 
 export default function Navbar() {
+  const item = useSelector((state) => state.cart);
+ 
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -90,7 +94,7 @@ export default function Navbar() {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={item.length} color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -121,7 +125,7 @@ export default function Navbar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={()=>{navigate("/cart")}}>
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={item.length} color="error">
               <ShoppingCartIcon />
               </Badge>
             </IconButton>
@@ -130,7 +134,7 @@ export default function Navbar() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={4} color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>

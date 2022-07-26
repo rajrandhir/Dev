@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../component/MainStyle.css";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
@@ -13,11 +13,25 @@ import Typography from "@mui/material/Typography";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-
-import data from "../record.json";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProduct } from "../redux/ProductSlice";
+import { add } from "../redux/CartSlice";
 
 const Main = () => {
+  const dispatch = useDispatch();
+  const { data, status} = useSelector((state)=>state.product);
+
+ console.log(data)
+  
+
+  useEffect(()=>{
+    dispatch(fetchProduct())
+  },[]);
   const [searchItem, setSearchItem] = useState("");
+
+  const handleAdd = (data) => {
+    dispatch(add(data))
+  }
 
   return (
     <>
@@ -75,6 +89,7 @@ const Main = () => {
                           <CardMedia
                             component="img"
                             height="140"
+                            width="100"
                             image={item.image}
                             alt="green iguana"
                           />
@@ -92,7 +107,7 @@ const Main = () => {
                                   variant="h5"
                                   component="div"
                                 >
-                                  {item.title}
+                                  {item.title.substring(0,10)}
                                 </Typography>
                               </div>
                               <div>
@@ -104,7 +119,7 @@ const Main = () => {
                             </div>
 
                             <Typography variant="body2" color="text.secondary">
-                              {item.desc}
+                              {item.description.substring(0,100)}
                             </Typography>
                           </CardContent>
                           <CardActions
@@ -125,8 +140,8 @@ const Main = () => {
                               <ShoppingCartIcon
                                 sx={{ mr: 1, fontSize: "20px" }}
                               />
-                              <Button variant="outlined" size="medium">
-                                LIVE PREVIEW
+                              <Button variant="outlined" size="small" onClick={()=>handleAdd(item)} >
+                                Add To Cart
                               </Button>
                             </div>
                           </CardActions>

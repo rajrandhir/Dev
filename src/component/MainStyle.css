@@ -34,4 +34,17 @@
 .css-1x51dt5-MuiInputBase-input-MuiInput-input{
     padding: 9px 11px !important;
 }
+.css-o69gx8-MuiCardMedia-root{
+    width: 50% !important;
+    padding-top: 1rem !important;
+    margin: auto !important;
+}
+.css-h93ljk-MuiTypography-root{
+    font-size: 1rem !important;
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root{
+    position: fixed !important;
+    top: 0;
+}
+
 
