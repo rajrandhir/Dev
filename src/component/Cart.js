@@ -11,15 +11,19 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import { remove } from "../redux/CartSlice";
+import { toast } from "react-toastify";
+
+
 
 const Cart = () => {
   const items = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const handleRemove = (id) =>{
-    dispatch(remove(id))
-  }
+  const handleRemove = (item) =>{
+    dispatch(remove(item))
+    toast.warning("Remove product from cart successfully!!")
 
+  }
   return (
     <div>
       <section style={{ width: "90%", margin: "auto", paddingBottom: "1rem" }}>
@@ -32,7 +36,7 @@ const Cart = () => {
             </div>
           </Grid>
           <Grid container spacing={2}>
-            {items.map((item) => {
+            {items.cartItems.map((item) => {
               return (
                 <>
                   <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -72,6 +76,9 @@ const Cart = () => {
                         <Typography variant="body2" color="text.secondary">
                           {item.description.substring(0, 100)}
                         </Typography>
+                        <Typography variant="h5" color="text.success">
+                          Quantity: {item.cartQuantity}
+                        </Typography>
                       </CardContent>
                       <CardActions
                         sx={{
@@ -87,7 +94,7 @@ const Cart = () => {
                         </div>
                         <div>
                           <ShoppingCartIcon sx={{ mr: 1, fontSize: "20px" }} />
-                          <Button variant="outlined" size="small" onClick={()=>handleRemove(item.id)}>
+                          <Button variant="outlined" size="small" onClick={()=>handleRemove(item)}>
                             Remove Card
                           </Button>
                         </div>

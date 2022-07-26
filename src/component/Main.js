@@ -16,6 +16,7 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct } from "../redux/ProductSlice";
 import { add } from "../redux/CartSlice";
+import { toast } from "react-toastify";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const Main = () => {
 
   const handleAdd = (data) => {
     dispatch(add(data))
+    toast.success("Added product to cart successfully!!")
   }
 
   return (
