@@ -107,8 +107,11 @@ export default function Navbar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, zIndex: 1000 }} style={{top:'0',position:'sticky'}}>
-      <AppBar >
+    <Box
+      sx={{ flexGrow: 1, zIndex: 1000 }}
+      style={{ top: "0", position: "sticky" }}
+    >
+      <AppBar>
         <Toolbar>
           <Typography
             variant="h6"

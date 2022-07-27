@@ -49,6 +49,7 @@ const Cart = () => {
                           width="100"
                           image={item.image}
                           alt="green iguana"
+                          style={{objectFit:"contain"}}
                         />
                         <CardContent>
                           <div

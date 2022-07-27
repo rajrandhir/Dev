@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../component/MainStyle.css";
+// import "../component/MainStyle.css";
+import "../component/HomeStyle.css";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
-import { Grid } from "@mui/material";
+import { FormControl, Grid, OutlinedInput } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -18,55 +19,52 @@ import { fetchProduct } from "../redux/ProductSlice";
 import { add } from "../redux/CartSlice";
 import { toast } from "react-toastify";
 
-const Main = () => {
+const Home = () => {
   const dispatch = useDispatch();
-  const { data, status} = useSelector((state)=>state.product);
+  const { data, status } = useSelector((state) => state.product);
 
- console.log(data)
-  
+  console.log(data);
 
-  useEffect(()=>{
-    dispatch(fetchProduct())
-  },[]);
+  useEffect(() => {
+    dispatch(fetchProduct());
+  }, []);
   const [searchItem, setSearchItem] = useState("");
 
   const handleAdd = (data) => {
-    dispatch(add(data))
-    toast.success("Added product to cart successfully!!")
-  }
+    dispatch(add(data));
+    toast.success("Added product to cart successfully!!");
+  };
 
   return (
     <>
-      <div className="main-container">
-        <section style={{marginBottom: "2rem",zIndex: 10 }}>
-              <div className="header">
-                <div className="img_wraper">
-                  <div className="searchBox" style={{ zIndex: 0}}>
-                    <TextField
-                      placeholder="Search"
-                      onChange={(e) => setSearchItem(e.target.value)}
-                      value={data.name}
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <SearchIcon />
-                          </InputAdornment>
-                        ),
-                      }}
-                      variant="standard"
-                      fullWidth
-                    />
-                  </div>
-                </div>
+      <div className="">
+        <section className="banner">
+          <div className="search_product">
+            <TextField
+              id="outlined-adornment-weight"
+              onChange={(e) => setSearchItem(e.target.value)}
+              value={data.name}
+              // endAdornment={<InputAdornment position="end"><SearchIcon />cccc</InputAdornment>}
+              aria-describedby="outlined-weight-helper-text"
+              fullWidth
+              placeholder="search"
+              size="small"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
           </div>
         </section>
-             
-        <section   style={{ width: "90%", margin: "auto", paddingBottom: "1rem" }}>
+
+        <section
+          style={{ width: "90%", margin: "auto", paddingBottom: "1rem" }}
+        >
           <div className="">
-            <Grid
-              container
-              spacing={2}
-            >
+            <Grid container spacing={2}>
               {data
                 .filter((item) => {
                   if (searchItem === "") {
@@ -90,6 +88,7 @@ const Main = () => {
                             width="100"
                             image={item.image}
                             alt="green iguana"
+                            style={{ objectFit: "contain", paddingTop: "1rem" }}
                           />
                           <CardContent>
                             <div
@@ -102,22 +101,22 @@ const Main = () => {
                               <div>
                                 <Typography
                                   gutterBottom
-                                  variant="h5"
+                                  variant="h6"
                                   component="div"
                                 >
-                                  {item.title.substring(0,10)}
+                                  {item.title.substring(0, 10)}
                                 </Typography>
                               </div>
                               <div>
-                                <PlaylistAddIcon style={{color: "grey"}}/>
+                                <PlaylistAddIcon style={{ color: "grey" }} />
                                 <span>
-                                  <FavoriteIcon style={{color: "grey"}}/>
+                                  <FavoriteIcon style={{ color: "grey" }} />
                                 </span>
                               </div>
                             </div>
 
                             <Typography variant="body2" color="text.secondary">
-                              {item.description.substring(0,100)}
+                              {item.description.substring(0, 100)}
                             </Typography>
                           </CardContent>
                           <CardActions
@@ -135,8 +134,16 @@ const Main = () => {
                               </Typography>
                             </div>
                             <div>
-                          
-                              <Button variant="outlined" size="small" startIcon={<ShoppingCartIcon style={{color: "#42b883"}}/>} onClick={()=>handleAdd(item)} >
+                              <Button
+                                variant="outlined"
+                                size="small"
+                                startIcon={
+                                  <ShoppingCartIcon
+                                    style={{ color: "#42b883" }}
+                                  />
+                                }
+                                onClick={() => handleAdd(item)}
+                              >
                                 Add To Cart
                               </Button>
                             </div>
@@ -154,4 +161,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Home;
