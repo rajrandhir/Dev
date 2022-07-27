@@ -15,7 +15,7 @@ root.render(
         <App />
         <ToastContainer
           position="top-center"
-          autoClose={2000}
+          autoClose={500}
           draggable={true}
         />
       </Provider>

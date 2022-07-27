@@ -38,12 +38,10 @@ const Main = () => {
   return (
     <>
       <div className="main-container">
-        <section style={{marginBottom: "2rem"}}>
-          <div className="header-container">
-            <div className="header-wraper">
+        <section style={{marginBottom: "2rem",zIndex: 10 }}>
               <div className="header">
                 <div className="img_wraper">
-                  <div className="searchBox">
+                  <div className="searchBox" style={{ zIndex: 0}}>
                     <TextField
                       placeholder="Search"
                       onChange={(e) => setSearchItem(e.target.value)}
@@ -60,8 +58,6 @@ const Main = () => {
                     />
                   </div>
                 </div>
-              </div>
-            </div>
           </div>
         </section>
              
@@ -83,10 +79,10 @@ const Main = () => {
                     return item;
                   }
                 })
-                .map((item) => {
+                .map((item, i) => {
                   return (
                     <>
-                      <Grid item xs={12} sm={6} md={4} lg={3}>
+                      <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
                         <Card className="product-container">
                           <CardMedia
                             component="img"
@@ -113,9 +109,9 @@ const Main = () => {
                                 </Typography>
                               </div>
                               <div>
-                                <PlaylistAddIcon />
+                                <PlaylistAddIcon style={{color: "grey"}}/>
                                 <span>
-                                  <FavoriteIcon />
+                                  <FavoriteIcon style={{color: "grey"}}/>
                                 </span>
                               </div>
                             </div>
@@ -133,16 +129,14 @@ const Main = () => {
                             <div>
                               <Typography>${item.price}</Typography>
                               <Typography
-                                sx={{ fontSize: "1rem", color: "teal" }}
+                                sx={{ fontSize: "1.5rem", color: "#f8b400" }}
                               >
                                 *******
                               </Typography>
                             </div>
                             <div>
-                              <ShoppingCartIcon
-                                sx={{ mr: 1, fontSize: "20px" }}
-                              />
-                              <Button variant="outlined" size="small" onClick={()=>handleAdd(item)} >
+                          
+                              <Button variant="outlined" size="small" startIcon={<ShoppingCartIcon style={{color: "#42b883"}}/>} onClick={()=>handleAdd(item)} >
                                 Add To Cart
                               </Button>
                             </div>
