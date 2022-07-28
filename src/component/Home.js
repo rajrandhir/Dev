@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import "../component/MainStyle.css";
 import "../component/HomeStyle.css";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
@@ -17,14 +16,12 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct } from "../redux/ProductSlice";
 import { add } from "../redux/CartSlice";
-import { toast } from "react-toastify";
+import Loading from "./Loading";
+import STATUSES from "../redux/ProductSlice"
 
 const Home = () => {
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.product);
-
-  console.log(data);
-
   useEffect(() => {
     dispatch(fetchProduct());
   }, []);
@@ -32,7 +29,6 @@ const Home = () => {
 
   const handleAdd = (data) => {
     dispatch(add(data));
-    toast.success("Added product to cart successfully!!");
   };
 
   return (
@@ -44,7 +40,6 @@ const Home = () => {
               id="outlined-adornment-weight"
               onChange={(e) => setSearchItem(e.target.value)}
               value={data.name}
-              // endAdornment={<InputAdornment position="end"><SearchIcon />cccc</InputAdornment>}
               aria-describedby="outlined-weight-helper-text"
               fullWidth
               placeholder="search"
@@ -80,7 +75,9 @@ const Home = () => {
                 .map((item, i) => {
                   return (
                     <>
-                      <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
+                     {
+                      (status === STATUSES.LOADING)? (<Loading />):(
+                        <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
                         <Card className="product-container">
                           <CardMedia
                             component="img"
@@ -150,6 +147,8 @@ const Home = () => {
                           </CardActions>
                         </Card>
                       </Grid>
+                      )
+                     }
                     </>
                   );
                 })}

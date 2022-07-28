@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const STATUSES = Object.freeze({
+  LOADING: "loading",
   IDLE: "idle",
   ERROR: "error",
-  LOADING: "loading",
+  
 });
 const productSlice = createSlice({
   name: "Product",
