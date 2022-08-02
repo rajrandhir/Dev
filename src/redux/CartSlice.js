@@ -30,20 +30,8 @@ const CartSlice = createSlice({
       if(state.cartItems[itemIndex].cartQuantity > 1){
         state.cartItems[itemIndex].cartQuantity -= 1;
         toast.info("decrease product quantity!!")
-      }else{
-        return false;
       }
     },
-    increaseCartItem: (state, action) => {
-      const itemIndex = state.cartItems.findIndex((item)=>item.id === action.payload.id);
-      if(state.cartItems[itemIndex].cartQuantity > 1){
-        state.cartItems[itemIndex].cartQuantity += 1;
-        toast.info("Increase product quantity")
-
-      }else{
-        return false
-      }
-    }
   },
 });
 export const { add, remove,increaseCartItem,decreaseCartItem } = CartSlice.actions;

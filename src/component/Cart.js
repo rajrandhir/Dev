@@ -9,7 +9,7 @@ import { Container, Grid} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-import { remove, increaseCartItem, decreaseCartItem } from "../redux/CartSlice";
+import { remove, increaseCartItem, decreaseCartItem , add} from "../redux/CartSlice";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -29,7 +29,7 @@ const Cart = () => {
   };
 
   const addProduct = (item) => {
-    dispatch(increaseCartItem(item));
+    dispatch(add(item));
   };
 
   const decreaseProduct = (item) => {
@@ -73,7 +73,7 @@ const Cart = () => {
                             <div>
                               <Typography
                                 gutterBottom
-                                variant="h6"
+                                variant="h5"
                                 component="div"
                               >
                                 {item.title.substring(0, 10)}
@@ -88,7 +88,7 @@ const Cart = () => {
                           </div>
 
                           <Typography variant="body2" color="text.secondary">
-                            {item.description.substring(0, 100)}
+                            {item.description.substring(0, 90)}
                           </Typography>
                           <div
                             style={{
@@ -98,8 +98,8 @@ const Cart = () => {
                               paddingTop: "5px",
                             }}
                           >
-                            <Typography variant="p">
-                              Quantity: {item.cartQuantity}
+                            <Typography variant="p" style={{textTransform: "capitalize", color:"green"}}>
+                              Size: F
                             </Typography>
 
                             <div>
@@ -113,6 +113,10 @@ const Cart = () => {
                                   onClick={() => addProduct(item)}
                                 >
                                   <AddIcon />
+                                </Button>
+                                <Button
+                                  key="one"
+                                >{item.cartQuantity}
                                 </Button>
                                 <Button
                                   key="two"
@@ -162,7 +166,7 @@ const Cart = () => {
                 sx={{ paddingTop: "3rem", margin: "auto" }}
               >
                  <Button variant="contained" onClick={()=>navigate("/")} startIcon={<FastRewindIcon />}>
-        Send
+        Home
       </Button>
               </Typography>
             )}

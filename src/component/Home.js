@@ -113,7 +113,7 @@ const Home = () => {
                             </div>
 
                             <Typography variant="body2" color="text.secondary">
-                              {item.description.substring(0, 100)}
+                              {item.description.substring(0, 90)}
                             </Typography>
                           </CardContent>
                           <CardActions
